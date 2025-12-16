@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú - Jalisco y mas</title>
+    <link rel="stylesheet" href="../style/menú.css" />
+    <!-- Theme override (will be swapped by JS) -->
+    <link id="theme-link" rel="stylesheet" href="../style/menú-theme-elegante.css">
+    <link rel="icon" href="../IMG/logo.png">
+</head>
+
+<body>
+    <header>
+        <div class="header-top">
+            <a href="../index.html" class="back-arrow" title="Volver al inicio">← Inicio</a>
+            <h1>🌮 Jalisco y mas</h1>
+            <!-- Selector de tema rápido -->
+            <div class="theme-selector" aria-hidden="false">
+                <button class="theme-btn" onclick="setTheme('vibrante')" title="Vibrante">🎉</button>
+                <button class="theme-btn" onclick="setTheme('elegante')" title="Elegante">✨</button>
+                <button class="theme-btn" onclick="setTheme('minimal')" title="Minimal">⚪</button>
+            </div>
+            <div class="cart-icon">
+                🛒 <span id="cart-total">$0.00</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- El botón de "ir abajo" se reemplaza por un botón "subir" fijo que aparece al hacer scroll -->
+
+    <nav class="category-nav">
+        <button class="category-btn" onclick="updateCategory('comidamexicana')">🌮 Comida mexicana</button>
+        <button class="category-btn" onclick="updateCategory('bebidas')">🍹 Bebidas</button>
+        <button class="category-btn" onclick="updateCategory('alambres')">🥗 Alambres</button>
+        <button class="category-btn" onclick="updateCategory('birria')">🥙 Birria</button>
+        <button class="category-btn" onclick="updateCategory('taquizas')">🌮 Taquizas</button>
+        <button class="category-btn" onclick="updateCategory('combos')">🌮 Combos</button>
+        <button class="category-btn" onclick="updateCategory('cocteles')">🍤 Cocteles</button>
+        <button class="category-btn" onclick="updateCategory('platosfuertes')">🥘 Platos fuertes</button>
+        <button class="category-btn" onclick="updateCategory('platoseconomicos')">🍽️ Platos economicos</button>
+        <button class="category-btn" onclick="updateCategory('detox')">🍃 Detox</button>
+    </nav>
+
+    <main id="menu" class="menu-container">
+        <!-- Productos se insertan aquí con JavaScript -->
+    </main>
+
+    <footer class="menu-footer">
+    </footer>
+
+    <!-- Botón flotante visible en toda la página (mejorado) -->
+    <button id="whatsapp-fab" class="whatsapp-fab" title="Ordenar por WhatsApp">
+        <span class="fab-icon">📱</span>
+        <span class="fab-badge" id="fab-badge">0</span>
+        <span class="fab-label">Ordenar</span>
+    </button>
+
+    <!-- Botón subir (aparece cuando el usuario baja) -->
+    <button id="scroll-top-btn" class="scroll-top-btn" title="Subir al inicio">↑</button>
+
+    <script src="../JavaScript/menu.js"></script>
+</body>
+
+</html>

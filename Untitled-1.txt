@@ -1,0 +1,2 @@
+git config --global user.name "Kevin Stanley Peñate León"
+git config --global user.email "kesoplox90@gmail.com"

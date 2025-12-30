@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galería - Jalisco y más</title>
+    <link rel="stylesheet" href="../style/galeria.css" />
+    <link rel="icon" href="../IMG/logo.png">
+</head>
+
+<body>
+    <header class="gallery-header">
+        <a class="btn-regreso" href="../index.html" aria-label="Volver al inicio">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            </svg>
+        </a>
+        <h1>🌮 GALERÍA 📸</h1>
+    </header>
+
+    <!-- Galería tipo carrusel -->
+    <div class="slider">
+        <div class="slides">
+            <img src="../IMG/taqueria5.jpeg" alt="Exterior de la taquería">
+            <img src="../IMG/taqueria.jpeg" alt="Entrada de la taquería">
+            <img src="../IMG/taqueria2.jpeg" alt="Entrada alternativa">
+            <img src="../IMG/taqueria3.jpeg" alt="Pared decorativa">
+            <img src="../IMG/taqueria4.jpeg" alt="Pared con decoración">
+            <img src="../IMG/taqueria7.jpeg" alt="Detalles del interior">
+            <img src="../IMG/taqueria6.jpeg" alt="Frase inspiradora">
+        </div>
+
+        <!-- Botones de navegación -->
+        <button class="prev" aria-label="Imagen anterior">&#10094;</button>
+        <button class="next" aria-label="Imagen siguiente">&#10095;</button>
+    </div>
+
+    <div class="dots"></div>
+
+    <script src="../JavaScript/galeria.js"></script>
+</body>
+
+</html>

@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 git config --global user.name "Kevin Stanley Peñate León"
+=======
+git config --global user.name "Kevin Stanley Peñate León"
+>>>>>>> 02721cc7465a66e9ff76ba660c164fd5fba7d53d
 git config --global user.email "kesoplox90@gmail.com"

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @echo off
 cd /d "c:\Users\MINEDUCYT\Desktop\Taqueria Jalisco"
 git pull origin main --allow-unrelated-histories

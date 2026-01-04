@@ -74,12 +74,15 @@ class ReviewSystem {
                 return;
             }
 
+            const deleteCode = Math.random().toString(36).substr(2, 9).toUpperCase();
+
             const review = {
                 nombre: name,
                 comentario: comment,
                 estrellas: this.selectedRating,
                 fecha: Date.now(),
-                id: Math.random().toString(36).substr(2, 9)
+                id: Math.random().toString(36).substr(2, 9),
+                deleteCode: deleteCode
             };
 
             if (this.useFirebase) {
@@ -88,9 +91,7 @@ class ReviewSystem {
                 this.saveToLocalStorage(review);
             }
 
-            this.reviewForm.reset();
-            this.selectedRating = 0;
-            this.updateStars();
+            alert(`¡Reseña enviada! Tu código para eliminar esta reseña es: ${deleteCode}. Guárdalo para poder borrarla después.`);
         });
     }
 
@@ -209,7 +210,7 @@ class ReviewSystem {
                         <h4>${this.escapeHtml(data.nombre)}</h4>
                         <p class="fecha">${fechaFormato}</p>
                     </div>
-                    <button class="btn-eliminar" data-id="${data.id || index}" data-nombre="${this.escapeHtml(data.nombre)}" title="Eliminar esta reseña">🗑️ Eliminar</button>
+                    <button class="btn-eliminar" data-id="${data.id || index}" data-delete-code="${data.deleteCode || ''}" data-nombre="${this.escapeHtml(data.nombre)}" title="Eliminar esta reseña">🗑️ Eliminar</button>
                 </div>
                 <p>${this.escapeHtml(data.comentario)}</p>
                 <p class="estrellas">${"★".repeat(data.estrellas)}${"☆".repeat(5 - data.estrellas)}</p>
@@ -219,9 +220,10 @@ class ReviewSystem {
             // Agregar evento al botón de eliminar
             const btnEliminar = review.querySelector(".btn-eliminar");
             const identifier = btnEliminar.getAttribute('data-id');
+            const deleteCode = btnEliminar.getAttribute('data-delete-code');
             const nombreAutor = btnEliminar.getAttribute('data-nombre');
             btnEliminar.addEventListener("click", () => {
-                this.deleteReview(identifier, nombreAutor);
+                this.deleteReview(identifier, deleteCode, nombreAutor);
             });
         });
     }
@@ -237,10 +239,23 @@ class ReviewSystem {
         return text.replace(/[&<>"']/g, m => map[m]);
     }
 
-    deleteReview(idOrIndex, nombreAutor) {
-        const nombreIngresado = prompt(`Para eliminar esta reseña, ingresa el nombre del autor: "${nombreAutor}"`);
-        if (nombreIngresado === null || nombreIngresado.trim() !== nombreAutor) {
-            alert("Nombre incorrecto. No se puede eliminar la reseña.");
+    deleteReview(idOrIndex, deleteCode, nombreAutor) {
+        let isAuthorized = false;
+        if (deleteCode) {
+            const codeIngresado = prompt("Ingresa el código de eliminación para esta reseña:");
+            if (codeIngresado && codeIngresado.trim().toUpperCase() === deleteCode) {
+                isAuthorized = true;
+            }
+        } else {
+            // Para reseñas antiguas sin código
+            const nombreIngresado = prompt(`Ingresa el nombre del autor "${nombreAutor}" para eliminar:`);
+            if (nombreIngresado && nombreIngresado.trim() === nombreAutor) {
+                isAuthorized = true;
+            }
+        }
+
+        if (!isAuthorized) {
+            alert("No autorizado. No se puede eliminar la reseña.");
             return;
         }
 

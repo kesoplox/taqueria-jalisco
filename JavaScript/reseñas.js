@@ -226,6 +226,12 @@ class ReviewSystem {
                 btnEliminar.addEventListener("click", () => {
                     this.deleteReview(identifier);
                 });
+
+                // Ocultar el botón después del tiempo restante
+                const tiempoRestante = 10000 - tiempoTranscurrido;
+                setTimeout(() => {
+                    btnEliminar.style.display = 'none';
+                }, tiempoRestante);
             }
         });
     }

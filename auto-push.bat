@@ -1,5 +1,5 @@
 @echo off
-cd /d "c:\Users\MINEDUCYT\Desktop\Taqueria Jalisco"
+cd /d "c:\Users\MINEDUCYT\Desktop\Kevin León web\Ejemplos de mi trabajo\PAGINAS WEB\Taqueria Jalisco"
 git add .
 git status --porcelain | findstr . >nul
 if %errorlevel% == 0 (
@@ -10,9 +10,4 @@ if %errorlevel% == 0 (
 ) else (
     echo No hay cambios para subir.
 )
-) else (
-    echo No hay cambios para subir.
-)
->>>>>>> be203c3 (Mejorar auto-push.bat y agregar auto-watch.ps1)
->>>>>>> 08d487b6552f3150d1d8247a66b2b62f43406a24
 pause

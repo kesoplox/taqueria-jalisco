@@ -1,3 +1,32 @@
+// variables globales para rastrear si Firebase cargó (antes de que el SDK se cargue)
+window.firebaseReady = false;
+window.firebaseTimeout = setTimeout(() => {
+    console.warn("Firebase tardó demasiado en cargar. Usando localStorage como respaldo.");
+    window.firebaseReady = false;
+}, 5000);
+
+// Configuración de Firebase, movida desde el HTML para mantener separación de responsabilidades
+window.firebaseConfig = {
+    apiKey: "AIzaSyDgJ6rdIAWyoIrmQU5EBQFz3zZLTYuQ0xo",
+    authDomain: "jalisco-y-mas.firebaseapp.com",
+    databaseURL: "https://jalisco-y-mas-default-rtdb.firebaseio.com",
+    projectId: "jalisco-y-mas",
+    storageBucket: "jalisco-y-mas.firebasestorage.app",
+    messagingSenderId: "1029992719234",
+    appId: "1:1029992719234:web:600974d7bd281fd079659b",
+    measurementId: "G-ZBHFKWN2FJ"
+};
+
+// Intentar inicializar Firebase (si el SDK ya está disponible)
+if (typeof firebase !== 'undefined' && firebase.apps && !firebase.apps.length) {
+    try {
+        firebase.initializeApp(window.firebaseConfig);
+        console.log("✓ Firebase inicializado correctamente");
+    } catch (error) {
+        console.warn("Firebase ya estaba inicializado o hay un error:", error);
+    }
+}
+
 // Sistema dual: Firebase + localStorage como respaldo
 class ReviewSystem {
     constructor() {

@@ -8,43 +8,13 @@
     <link rel="stylesheet" href="../style/reseñas.css" />
     <link rel="icon" href="../IMG/logo.png">
     
-    <!-- Firebase SDKs - CON TIMEOUT -->
-    <script>
-        // Variable global para rastrear si Firebase cargó
-        window.firebaseReady = false;
-        window.firebaseTimeout = setTimeout(() => {
-            console.warn("Firebase tardó demasiado en cargar. Usando localStorage como respaldo.");
-            window.firebaseReady = false;
-        }, 5000);
-    </script>
-    
-    <!-- Usar las builds 'compat' que exponen el objeto global `firebase` (API namespaced) -->
+    <!-- Firebase SDKs -->
+    <!-- el helper de timeout se inicializa en el archivo reseñas.js -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js" onload="window.firebaseReady = true; clearTimeout(window.firebaseTimeout);"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 
-    <!-- Configuración de Firebase -->
-    <script>
-        window.firebaseConfig = {
-            apiKey: "AIzaSyDgJ6rdIAWyoIrmQU5EBQFz3zZLTYuQ0xo",
-            authDomain: "jalisco-y-mas.firebaseapp.com",
-            databaseURL: "https://jalisco-y-mas-default-rtdb.firebaseio.com",
-            projectId: "jalisco-y-mas",
-            storageBucket: "jalisco-y-mas.firebasestorage.app",
-            messagingSenderId: "1029992719234",
-            appId: "1:1029992719234:web:600974d7bd281fd079659b",
-            measurementId: "G-ZBHFKWN2FJ"
-        };
-
-        // Intentar inicializar Firebase
-        if (typeof firebase !== 'undefined' && firebase.apps && !firebase.apps.length) {
-            try {
-                firebase.initializeApp(window.firebaseConfig);
-                console.log("✓ Firebase inicializado correctamente");
-            } catch (error) {
-                console.warn("Firebase ya estaba inicializado o hay un error:", error);
-            }
-        }
-    </script>
+    <!-- Scripts personalizados -->
+    <script src="../JavaScript/reseñas.js" defer></script>
 </head>
 
 <body>
